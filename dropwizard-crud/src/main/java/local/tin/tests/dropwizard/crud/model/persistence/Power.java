@@ -1,6 +1,5 @@
 package local.tin.tests.dropwizard.crud.model.persistence;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,8 +8,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import local.tin.tests.dropwizard.crud.model.persistence.abstracts.AbstractNamed;
-
-
+import local.tin.tests.dropwizard.crud.model.persistence.serializers.SuperHeroListSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 /**
  *
  * @author benitodarder
@@ -23,6 +22,7 @@ import local.tin.tests.dropwizard.crud.model.persistence.abstracts.AbstractNamed
 public class Power extends AbstractNamed {
 
     @ManyToMany(mappedBy = "powers")
+    @JsonSerialize(using = SuperHeroListSerializer.class)
     private List<SuperHero> superHeroes;
 
     public List<SuperHero> getSuperHeroes() {

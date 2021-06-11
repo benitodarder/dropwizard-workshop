@@ -3,7 +3,6 @@ package local.tin.tests.dropwizard.crud;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
-import io.dropwizard.hibernate.ScanningHibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import local.tin.tests.dropwizard.crud.daos.PowerDAO;
