@@ -35,7 +35,12 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <scope>test</scope>
-        </dependency>          
+        </dependency>   
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+        </dependency>        
     </dependencies>    
     <build>
         <plugins>
