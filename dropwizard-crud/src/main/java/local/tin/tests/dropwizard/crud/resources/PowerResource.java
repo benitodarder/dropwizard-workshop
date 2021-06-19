@@ -24,10 +24,10 @@ import local.tin.tests.dropwizard.crud.model.persistence.Power;
 @Produces(MediaType.APPLICATION_JSON)
 public class PowerResource {
 
-    private final PowerDAO superHeroeDAO;
+    private final PowerDAO powerDAO;
 
-    public PowerResource(PowerDAO superHeroeDAO) {
-        this.superHeroeDAO = superHeroeDAO;
+    public PowerResource(PowerDAO powerDAO) {
+        this.powerDAO = powerDAO;
     }
 
     @POST
@@ -35,7 +35,7 @@ public class PowerResource {
     @Timed
     @UnitOfWork
     public Power create(Power superHeroe) {
-        return superHeroeDAO.create(superHeroe);
+        return powerDAO.create(superHeroe);
     }
 
     @GET
@@ -43,7 +43,7 @@ public class PowerResource {
     @Timed
     @UnitOfWork
     public Power retrieve(@PathParam("id") Integer id) {
-        return superHeroeDAO.retrieve(id);
+        return powerDAO.retrieve(id);
     }  
     
     @POST
@@ -51,8 +51,8 @@ public class PowerResource {
     @Timed
     @UnitOfWork
     public Power update(Power superHeroe) {
-        superHeroeDAO.update(superHeroe);
-        return superHeroeDAO.retrieve((Integer) superHeroe.getId());
+        powerDAO.update(superHeroe);
+        return powerDAO.retrieve((Integer) superHeroe.getId());
     }   
     
     @DELETE
@@ -60,7 +60,7 @@ public class PowerResource {
     @Timed
     @UnitOfWork
     public void delete(Power superHeroe) {
-        superHeroeDAO.delete(superHeroe);
+        powerDAO.delete(superHeroe);
     }     
     
     @GET
@@ -68,6 +68,6 @@ public class PowerResource {
     @Timed
     @UnitOfWork
     public List<Power> findAll() {
-        return superHeroeDAO.findAll();
+        return powerDAO.findAll();
     }    
 }
