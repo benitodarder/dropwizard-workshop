@@ -41,11 +41,6 @@
             <artifactId>hsqldb</artifactId>
             <scope>test</scope>
         </dependency>  
-        <dependency>
-            <groupId>org.codehaus.sonar-plugins.java</groupId>
-            <artifactId>sonar-jacoco-listeners</artifactId>
-            <scope>test</scope>
-        </dependency>                
     </dependencies>    
     <build>
         <plugins>
