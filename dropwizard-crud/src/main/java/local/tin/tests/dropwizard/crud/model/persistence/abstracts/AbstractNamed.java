@@ -30,7 +30,7 @@ public abstract class AbstractNamed extends AbstractIdentifiable implements INam
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        var hash = 5;
         hash = 67 * hash + Objects.hashCode(this.name);
         hash = 67 * hash + super.hashCode();
         return hash;

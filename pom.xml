@@ -15,7 +15,11 @@
         <!-- Common -->
         <dropwizard.version>2.0.22</dropwizard.version>
         <fasterxml.jackson.version>2.11.4</fasterxml.jackson.version>
-        <h2.version>1.4.200</h2.version>    
+        <h2.version>1.4.200</h2.version>  
+        <!-- Unit testing and software quality -->
+        <jacoco.version>0.8.7</jacoco.version>                  
+        <sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>      
+        <sonar.plugin.version>3.6.0.1398</sonar.plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -99,7 +103,55 @@
                             </manifest>
                         </archive>
                     </configuration>
-                </plugin>                     
+                </plugin>  
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.sonar-plugins.java</groupId>
+                            <artifactId>sonar-jacoco-listeners</artifactId>
+                            <version>${sonar-jacoco-listeners.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <dataFile>target/jacoco.exec</dataFile>
+                                <outputDirectory>target/jacoco-ut</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>                                    
             </plugins>
         </pluginManagement>
     </build>

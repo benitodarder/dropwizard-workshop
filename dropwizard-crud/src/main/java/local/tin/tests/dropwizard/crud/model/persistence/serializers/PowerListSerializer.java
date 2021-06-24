@@ -19,7 +19,7 @@ public class PowerListSerializer extends JsonSerializer<List<Power>> {
         List<Power> simplePowers = new ArrayList<>();
 
         powers.forEach(current -> {
-            Power newItem = new Power();
+            var newItem = new Power();
             newItem.setId(current.getId());
             newItem.setName(current.getName());
             simplePowers.add(newItem);
