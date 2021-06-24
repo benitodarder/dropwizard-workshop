@@ -22,7 +22,6 @@
         <jacoco.version>0.8.7</jacoco.version>            
         <junit.5.version>5.4.0</junit.5.version>
         <mockito.version>1.10.19</mockito.version>                 
-        <sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>      
         <sonar.plugin.version>3.6.0.1398</sonar.plugin.version>
     </properties>
     <dependencyManagement>
@@ -76,12 +75,7 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.codehaus.sonar-plugins.java</groupId>
-                <artifactId>sonar-jacoco-listeners</artifactId>
-                <version>${sonar-jacoco-listeners.version}</version>
-            </dependency>              
+            </dependency>         
         </dependencies>
     </dependencyManagement>
     <build>
