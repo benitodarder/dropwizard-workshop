@@ -1,4 +1,4 @@
-package local.tin.tests.superheroes.model.persistence.exceptions;
+package local.tin.tests.dropwizard.crud.model.persistence.exceptions;
 
 /**
  *

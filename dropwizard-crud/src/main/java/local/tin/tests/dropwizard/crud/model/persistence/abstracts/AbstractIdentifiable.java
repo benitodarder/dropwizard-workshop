@@ -33,7 +33,7 @@ public abstract class AbstractIdentifiable implements IIdentifiable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        var hash = 5;
         hash = 53 * hash + Objects.hashCode(this.getId());
         return hash;
     }

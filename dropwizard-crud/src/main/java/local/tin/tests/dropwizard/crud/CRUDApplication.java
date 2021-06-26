@@ -43,9 +43,9 @@ public class CRUDApplication extends Application<CRUDConfiguration> {
 
     @Override
     public void run(CRUDConfiguration config, Environment environment) {
-        final SuperHeroeDAO superHeroeDAO = new SuperHeroeDAO(hibernateBundle.getSessionFactory());
+        var superHeroeDAO = new SuperHeroeDAO(hibernateBundle.getSessionFactory());
         environment.jersey().register(new SuperHeroeResource(superHeroeDAO));
-        final PowerDAO powerDAO = new PowerDAO(hibernateBundle.getSessionFactory());
+        var powerDAO = new PowerDAO(hibernateBundle.getSessionFactory());
         environment.jersey().register(new PowerResource(powerDAO));        
     }
 

@@ -47,7 +47,7 @@ class SuperHeroeResourceTest {
     }
 
     @Test
-    public void create_returns_200_when_successful() {
+    void create_returns_200_when_successful() {
 
         Client client = EXT.client();
 
@@ -60,7 +60,7 @@ class SuperHeroeResourceTest {
     }
     
      @Test
-    public void create_assigns_id() {
+    void create_assigns_id() {
 
         Client client = EXT.client();
 
@@ -73,7 +73,7 @@ class SuperHeroeResourceTest {
     }
     
     @Test
-    public void test_test() {
+    void test_test() {
         
         System.out.println("Test executed!");
         

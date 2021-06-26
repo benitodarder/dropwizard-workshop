@@ -45,7 +45,7 @@ class PowerResourceTest {
     }
 
     @Test
-    public void create() {
+    void create() {
 
         EXT.target("/powers/create").request().post(Entity.json(power));
         
@@ -53,7 +53,7 @@ class PowerResourceTest {
     }
     
     @Test
-    public void test_test() {
+    void test_test() {
         
         System.out.println("Test executed!");
         

@@ -18,7 +18,7 @@ public class SuperHeroListSerializer extends JsonSerializer<List<SuperHero>> {
         List<SuperHero> simpleSuperHeros = new ArrayList<>();
 
         heroes.forEach(current -> {
-            SuperHero newItem = new SuperHero();
+            var newItem = new SuperHero();
             newItem.setId(current.getId());
             newItem.setName(current.getName());
             simpleSuperHeros.add(newItem);

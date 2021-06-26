@@ -17,9 +17,12 @@
         <dropwizard.version>2.0.22</dropwizard.version>
         <fasterxml.jackson.version>2.11.4</fasterxml.jackson.version>
         <h2.version>1.4.200</h2.version>  
+        <!-- Unit testing and software quality -->
         <hsqldb.version>2.6.0</hsqldb.version>  
+        <jacoco.version>0.8.7</jacoco.version>            
         <junit.5.version>5.4.0</junit.5.version>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>1.10.19</mockito.version>                 
+        <sonar.plugin.version>3.6.0.1398</sonar.plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -72,7 +75,7 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
-            </dependency>
+            </dependency>         
         </dependencies>
     </dependencyManagement>
     <build>
@@ -123,7 +126,48 @@
                             </manifest>
                         </archive>
                     </configuration>
-                </plugin>    
+                </plugin>  
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <dataFile>target/jacoco.exec</dataFile>
+                                <outputDirectory>target/site/jacoco</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>                                    
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
